@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('company');
             $table->string('position');
+            $table->string('location');
             $table->string('link')->nullable();
             $table->date('date');
             $table->string('status');

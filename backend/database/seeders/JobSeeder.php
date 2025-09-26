@@ -17,6 +17,7 @@ class JobSeeder extends Seeder
             [
                 'company' => 'Tech Corp',
                 'position' => 'Frontend Developer',
+                'location' => 'Taytay',
                 'link' => 'https://techcorp.com/careers/frontend-dev',
                 'date' => '2024-01-15',
                 'status' => 'Applied',
@@ -25,6 +26,7 @@ class JobSeeder extends Seeder
             [
                 'company' => 'StartupXYZ',
                 'position' => 'Full Stack Developer',
+                'location' => 'Taytay',
                 'link' => 'https://startupxyz.com/jobs',
                 'date' => '2024-01-20',
                 'status' => 'Interview Scheduled',
@@ -33,6 +35,7 @@ class JobSeeder extends Seeder
             [
                 'company' => 'BigTech Inc',
                 'position' => 'Software Engineer',
+                'location' => 'Taytay',
                 'link' => 'https://bigtech.com/careers',
                 'date' => '2024-01-25',
                 'status' => 'Rejected',

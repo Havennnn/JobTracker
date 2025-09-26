@@ -48,6 +48,6 @@ export default function useJobs(){
         }
     }
 
-    return {jobs, loading, error, addJob}
+    return {jobs, loading, error, addJob, removeJob}
 
 }
