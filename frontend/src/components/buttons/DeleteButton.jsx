@@ -1,10 +1,12 @@
+import { FaTrash } from "react-icons/fa";
+
 export default function DeleteButton({ onClick }) {
   return (
     <button
-      className="border border-black cursor-pointer px-4 py-2"
+      className="bg-red-500 text-white rounded-lg cursor-pointer p-2"
       onClick={onClick}
     >
-      Delete
+      <FaTrash />
     </button>
   );
 }

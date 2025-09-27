@@ -1,18 +1,19 @@
 import { useState, useEffect } from "react";
-import { fetchJobs, createJob, updateJob, deleteJob } from "../service/jobsApi";
+import { createJob, readJobs, updateJob, deleteJob, viewJob } from "../service/jobsApi";
 
 export default function useJobs(){
     const [jobs, setJobs] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
+    const [selectedJob, setSelectedJob] = useState(null);
 
     useEffect(() => {
         async function loadJobs() {
             try {
-                const data = await fetchJobs();
+                const data = await readJobs();
                 setJobs(data);
             } catch (err) {
-                setError(err.message || "Fetch Job Error");
+                setError(err.message || "Read Jobs Error");
             } finally {
                 setLoading(false);
             }
@@ -20,6 +21,15 @@ export default function useJobs(){
 
         loadJobs();
     }, []);
+
+    async function scanJob(id) {
+        try {
+            const fetchJob = await viewJobs(id);
+            selectedJob(fetchJob);
+        } catch (err) {
+            setError(err.message || "View Job Error");
+        }
+    }
 
     async function addJob(jobData) {
         try {
@@ -48,6 +58,6 @@ export default function useJobs(){
         }
     }
 
-    return {jobs, loading, error, addJob, removeJob}
+    return {jobs, loading, error, addJob, removeJob, editJob, scanJob}
 
 }

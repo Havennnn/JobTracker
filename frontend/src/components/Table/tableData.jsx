@@ -1,3 +1,7 @@
+import DeleteButton from "../buttons/DeleteButton";
+import EditButton from "../buttons/EditButton";
+import ViewButton from "../buttons/ViewButton";
+
 export const headsData = [
   "Company",
   "Position",
@@ -8,7 +12,7 @@ export const headsData = [
   "Action",
 ];
 
-export function getRowData(job) {
+export function getRowData(job, removeJob, editJob, scanJob) {
   return [
     job.company,
     job.position,
@@ -22,6 +26,10 @@ export function getRowData(job) {
     ),
     job.date,
     job.status,
-    "View Details",
+    <div className="space-x-1">
+      <ViewButton job={job} scanJob={scanJob} />
+      <EditButton job={job} editJob={editJob} />
+      <DeleteButton onClick={() => removeJob(job.id)} />
+    </div>,
   ];
 }

@@ -1,21 +1,11 @@
-import DeleteButton from "../../buttons/DeleteButton";
+import { getRowData } from "../tableData";
 
-export default function JobRow({ job, removeJob }) {
+export default function JobRow({ job, removeJob, editJob, scanJob }) {
   return (
-    <tr>
-      <td>{job.company}</td>
-      <td>{job.position}</td>
-      <td>{job.location}</td>
-      <td>
-        <a href={job.link} target="_blank" rel="noopener noreferrer">
-          🌏︎
-        </a>
-      </td>
-      <td>{job.date}</td>
-      <td>{job.status}</td>
-      <td>
-        <DeleteButton onClick={() => removeJob(job.id)} />
-      </td>
+    <tr className="text-center p-5">
+      {getRowData(job, removeJob, editJob, scanJob).map((row, index) => (
+        <td key={index}>{row}</td>
+      ))}
     </tr>
   );
 }

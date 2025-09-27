@@ -1,34 +1,26 @@
 import useJobs from "../../hooks/useJobs";
 import JobTable from "../Table/JobTable";
+import AddButton from "../buttons/AddButton";
 
 export default function Jobs() {
-  const { jobs, loading, error, addJob, removeJob } = useJobs();
+  const { jobs, loading, error, addJob, removeJob, editJob, scanJob } =
+    useJobs();
 
   return (
     <div>
+      <div className="flex items-center justify-between">
+        <h1 className="text-4xl mb-4 font-bold">Job Tracker</h1>
+        <AddButton addJob={addJob}></AddButton>
+      </div>
       <JobTable
         jobs={jobs}
         loading={loading}
         error={error}
         removeJob={removeJob}
+        editJob={editJob}
+        scanJob={scanJob}
       />
       <br />
-      <button
-        className="border border-black cursor-pointer"
-        onClick={() =>
-          addJob({
-            company: "New Co",
-            position: "Developer",
-            location: "Taytay",
-            link: "https://testing.com",
-            date: "2025-09-22",
-            status: "Applied",
-            notes: "Test note",
-          })
-        }
-      >
-        Add Job
-      </button>
     </div>
   );
 }
