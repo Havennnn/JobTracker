@@ -1,30 +1,16 @@
 <?php
 
+use App\Http\Controllers\JobController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Models\Job;
 
-Route::get('jobs', function () {
-    return Job::all();
-});
+Route::get('jobs', [JobController::class, 'index'])->name('jobs.index');
 
-Route::post('jobs', function (Request $request) {
-    $job = Job::create($request->all());
-    return response()->json($job, 201);
-});
+Route::post('jobs', [JobController::class, 'store'])->name('jobs.store');
 
-Route::get('jobs/{id}', function ($id) {
-    return Job::findOrFail($id);
-});
+Route::get('jobs/{id}', [JobController::class, 'show'])->name('jobs.show');
 
-Route::put('jobs/{id}', function (Request $request, $id) {
-    $job = Job::findOrFail($id);
-    $job->update($request->all());
-    return $job;
-});
+Route::put('jobs/{id}', [JobController::class, 'update'])->name('jobs.update');
 
-Route::delete('jobs/{id}', function ($id) {
-    $job = Job::findOrFail($id);
-    $job->delete();
-    return response()->json(['message' => 'Job deleted successfully']);
-});
+Route::delete('jobs/{id}', [JobController::class, 'destroy'])->name('jobs.destroy');

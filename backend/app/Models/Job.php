@@ -25,6 +25,6 @@ class Job extends Model
 
     public function getDateAttribute($value)
     {
-        return Carbon::parse($value)->format('m-d-Y');
+        return Carbon::parse($value)->format('Y-m-d');
     }
 }
